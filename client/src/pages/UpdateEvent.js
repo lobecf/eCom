@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { ProfileTitle } from "../styles";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useHistory } from 'react-router-dom';
-import CloudinaryUpload from './CloudinaryUpload'
+// import CloudinaryUpload from './CloudinaryUpload'
 
 function UpdateEvent({eventId, allUsers}) {
   const [event, setEvent] = useState([])
@@ -14,7 +14,7 @@ function UpdateEvent({eventId, allUsers}) {
   const [startTime, setStartTime] = useState("")
   const [endTime, setEndTime] = useState("")
   const [receivers, setReceivers] = useState([])
-  const [eventImage, setEventImage] = useState('')
+  // const [eventImage, setEventImage] = useState('')
   const history = useHistory();
 
   useEffect(() => {
@@ -29,7 +29,7 @@ function UpdateEvent({eventId, allUsers}) {
         setLocation(event.location)
         setStartTime(event.start_time)
         setEndTime(event.end_time)
-        setEventImage(event.event_picture_url)
+        // setEventImage(event.event_picture_url)
         setReceivers([])
       })
     })
@@ -49,7 +49,9 @@ function UpdateEvent({eventId, allUsers}) {
 
 
   function handleUpdate() {
-    let event={title, description, location, start_time: startTime, end_time: endTime, receivers, event_picture_url: eventImage}
+    let event={title, description, location, start_time: startTime, end_time: endTime, receivers
+      // , event_picture_url: eventImage
+    }
     console.warn("event", event)
     fetch(`/api/events/${eventId}`, {
       method: 'PATCH',
